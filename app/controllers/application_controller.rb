@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   attr_reader :current_user
 
-  helper_method :collection, :resource
+  helper_method :collection, :resource, :current_user
 
   before_action :authenticate!
 
