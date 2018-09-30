@@ -3,6 +3,14 @@ class ApplicationController < ActionController::Base
 
   helper_method :collection, :resource
 
+  def create
+    render :errors unless resource.save
+  end
+
+  def destroy
+    resource.destroy
+  end
+
   rescue_from ActionController::ParameterMissing do |exception|
     @exception = exception
 
