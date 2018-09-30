@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :collection, :resource
 
+  before_action :authenticate!
+
   def create
     render :errors unless resource.save
   end
@@ -25,5 +27,13 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordInvalid, ActiveModel::StrictValidationFailed do
     render :errors, status: :unprocessable_entity
+  end
+
+  private
+
+  def authenticate!
+    authenticate_or_request_with_http_token do |token, options|
+      @current_user = User.joins(:auth_token).find_by auth_tokens: { value: token }
+    end
   end
 end
