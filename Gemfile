@@ -10,7 +10,7 @@ gem 'bcrypt'
 gem 'uglifier'
 gem 'bootsnap', require: false
 gem 'active_model_serializers'
-gem 'will_paginate', '~> 3.1.0'
+gem 'kaminari'
 
 group :development do
   gem 'listen'
