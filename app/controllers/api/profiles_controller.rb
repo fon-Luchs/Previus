@@ -1,5 +1,6 @@
-class ProfilesController < ApplicationController
-  skip_before_action :authenticate, only: :create
+class Api::ProfilesController < ApplicationController
+  skip_before_action :authenticate!, only: :create
+  skip_before_action :verify_authenticity_token, only: :create
 
   private
 
