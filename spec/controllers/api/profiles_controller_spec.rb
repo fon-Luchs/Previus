@@ -16,7 +16,7 @@ RSpec.describe Api::ProfilesController, type: :controller do
       { user:
         {
           email: email,
-          name: name,
+          username: name,
           password: password,
           password_confirmation: password
         } }

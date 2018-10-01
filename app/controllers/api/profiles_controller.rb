@@ -1,16 +1,19 @@
 class Api::ProfilesController < ApplicationController
   skip_before_action :authenticate!, only: :create
-  skip_before_action :verify_authenticity_token, only: :create
+
+  before_action :build_resource, only: :create
 
   private
 
-  def resource_param
-    params.require(:user).permit(
-      :name, :email, :password, :password_confirmation
-    )
+  def build_resource
+    @user = User.new resource_params
   end
 
   def resource
-    @user = User.new resource_param
+    @user ||= current_user
+  end
+
+  def resource_params
+    params.require(:user).permit(:email, :password, :password_confirmation, :username)
   end
 end

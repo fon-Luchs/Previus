@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate!
 
+  skip_before_action :verify_authenticity_token, if: -> { request.format.json? }
+
   def create
     render :errors unless resource.save
   end
