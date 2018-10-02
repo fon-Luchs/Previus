@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     resource.destroy
   end
 
+  def update
+    render :errors unless resource.update(resource_params)
+  end
+
   rescue_from ActionController::ParameterMissing do |exception|
     @exception = exception
 
