@@ -33,8 +33,6 @@ RSpec.describe Api::ProfilesController, type: :controller do
 
       before { post :create, params: params, format: :json }
 
-      it { expect(response.body).to eq('lol') }
-
       it { should render_template :create }
     end
 
@@ -45,5 +43,9 @@ RSpec.describe Api::ProfilesController, type: :controller do
 
       it { should render_template :errors }
     end
+  end
+
+  describe 'routes test' do
+    it { should route(:post, '/api/profile').to(action: :create, format: :json ) }
   end
 end
