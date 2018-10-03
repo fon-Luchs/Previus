@@ -46,6 +46,6 @@ RSpec.describe Api::ProfilesController, type: :controller do
   end
 
   describe 'routes test' do
-    it { should route(:post, '/api/profile').to(action: :create, format: :json ) }
+    it { should route(:post, '/api/profile').to(action: :create, format: :json) }
   end
 end

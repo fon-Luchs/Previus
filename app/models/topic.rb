@@ -1,3 +1,4 @@
 class Topic < ApplicationRecord
-  has_one :forum
+  belongs_to :forum
+  has_many :discussion, dependent: :destroy
 end

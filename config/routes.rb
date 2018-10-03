@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     resource :profile, only: [:create, :show]
 
     resources :forums  do
-      resources :topics, only: [:create, :update, :destroy, :show]
+      resources :topics, only: [:create, :update, :destroy, :show] do
+        resources :discussion, only: [:create, :destroy, :update]
+      end
     end
   end
 end
