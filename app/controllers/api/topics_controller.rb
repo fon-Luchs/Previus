@@ -1,5 +1,5 @@
 class Api::TopicsController < ApplicationController
-  before_action :set_forum, only: :create
+  before_action :set_user, only: :create
 
   def show
     @topic = Topic.find(params[:id])
@@ -7,15 +7,15 @@ class Api::TopicsController < ApplicationController
 
   private
 
-  def set_forum
-    @forum = Forum.find(params[:forum_id])
+  def set_user
+    @user = current_user
   end
 
   def resource
-    @topic = forum.topics.new resource_params
+    @topic = @user.topics.new resource_params
   end
 
   def resource_params
-    params.require(:topic).permit(:title, :text)
+    params.require(:topic).permit(:title, :text, :forum_id)
   end
 end

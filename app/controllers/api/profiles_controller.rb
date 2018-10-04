@@ -3,6 +3,10 @@ class Api::ProfilesController < ApplicationController
 
   before_action :build_resource, only: :create
 
+  def show
+    @profile = User.find(params[:id])
+  end
+
   private
 
   def build_resource

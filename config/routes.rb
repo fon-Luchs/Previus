@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
     resources :forums  do
       resources :topics, only: [:create, :update, :destroy, :show] do
-        resources :discussion, only: [:create, :destroy, :update]
+        resources :discussions, only: [:create, :destroy, :update]
       end
     end
   end
